@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pierwsza Aplikacja VueJS</title>
+    
+</head>
+<body>
+
+    <div id="app">
+        Nowe imię: <input type="text" v-bind:value="firstName" v-on:input="changeName"/>
+        <h1 v-bind:style="h1Style">Hello {{firstName}} {{lastName}}!</h1>
+        <button v-on:click="changeColor">Zmień kolor</button>
+    </div>
+
+    <!--- Link CDN dla VueJS wersja 2 --->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
