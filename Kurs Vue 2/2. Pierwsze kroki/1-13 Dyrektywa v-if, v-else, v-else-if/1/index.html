@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <template v-if="logginAttempt >= 3">
+            Zablokowano możliwość logowania, maksymalna liczba prób osiągnięta!
+        </template>
+        <template v-else-if="!loggedIn">
+            podaj hasło: <input type="password" v-model="password"/>
+            <button @click="checkPassword">Zaloguj</button>
+        </template>
+        <template v-else>
+            Gratulacje! Udało sie zalogować!
+        </template>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
