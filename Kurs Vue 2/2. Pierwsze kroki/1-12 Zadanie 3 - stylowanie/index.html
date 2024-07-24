@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="main/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="app">
+        <div>
+            <button class="btn" @click="hp-=10">Odejmij HP</button>
+            <div class="progressbar">
+                <!--Inna klasa w zależnosci od przedzialow HP - kolor paska-->
+                <!--Dynamicznie bindowana szerokość(styl)-->
+                <!--Kiedy HP < 0, resetujemy pasek-->
+                <div 
+                class="progressbar__bar" 
+                :style="{width: hp+'%', backgroundColor: barColor}"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
