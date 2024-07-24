@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pierwsza Aplikacja VueJS</title>
+
+    <link rel="stylesheet" href="main/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <div id="app">
+        <button class="btn btn--centered" 
+            v-bind:style="buttonStyle"
+            v-on:click="openModal">Otwórz</button>
+        <div class="modal" 
+            v-bind:style="modalStyle"
+            v-on:click="hideModal">
+            <div class="modal__window" v-on:click.stop>
+                <h2 class="window__header"> {{header}} </h2>
+                <p class="window__content" v-html="content">  </p>
+            </div>
+        </div>
+    </div>
+
+    <!--- Link CDN dla VueJS wersja 2 --->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
