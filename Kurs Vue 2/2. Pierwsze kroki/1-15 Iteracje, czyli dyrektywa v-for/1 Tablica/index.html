@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(fruit, index) in filteredFruits" :key="index+10">{{ index }}  {{ fruit }}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="i in 50">{{i}}</li>
+        </ul>
+      </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
