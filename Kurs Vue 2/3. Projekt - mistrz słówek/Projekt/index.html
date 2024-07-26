@@ -9,12 +9,12 @@
 </head>
 <body>
     <div id="app">
-        <main class="game">
-            <h2>Wynik: 0pkt</h2>
+        <main class="game" :class="{ full: words.length < 1 }">
+            <h2>Wynik: {{result}}pkt</h2>
             <h1>Mistrz słówek</h1>
-            <h3 class="info info--standard">Sprawdź się!</h3>
-            <h3 class="info info--success">Doobrze +1pkt!</h3>
-            <h3 class="info info--fail">Błędna odpowiedź -0.5pkt!</h3>
+            <h3 v-show="lastAnswer === null" class="info info--standard">Sprawdź się!</h3>
+            <h3 v-show="lastAnswer === true" class="info info--success">Doobrze +1pkt!</h3>
+            <h3 v-show="lastAnswer === false" class="info info--fail">Błędna odpowiedź -0.5pkt!</h3>
             <div class="canvas" v-if="dictionary.length >= 1">
                 <div class="wrapper">
                     <div class="task task--local">
@@ -46,9 +46,14 @@
             </div>
             <div v-else>
                 <h2 class="result">Gratulacje! Ukończyłeś rozgrywkę z wynikiem {{result}}pkt!</h2>
+                <div class="wrapper">
+                    <button 
+                    @click="initialState" class="btn"
+                    >Zagraj jeszcze raz</button>
+                </div>
             </div>
         </main>
-        <aside class="dictionary">
+        <aside class="dictionary" :class="{ visible: words.length >= 1 }">
             <h4>Słowniczek</h4>
             <hr>
             <table>

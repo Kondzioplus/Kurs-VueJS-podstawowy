@@ -7,11 +7,13 @@ new Vue({
    dictionary: [],
    currentWordId: 0,
    currentWord: '',
+   lastAnswer: null
   },
   methods:{
     // metoda obliczająca wynik
     randWord: function(restrict){
-      this.currentWordId = Math.floor(Math.random() * this.dictionary.length);
+      var randedId = Math.floor(Math.random() * this.dictionary.length);
+      // sprawdzenie czy wylosowany indeks nie jest równy zrestrictowanym, jeśli tak, wylosuj inny
       if(restrict !== undefined && this.dictionary.length >= 2){
         if(randedId == restrict){
           if(randedId > 0){
@@ -29,10 +31,11 @@ new Vue({
       this.dictionary = [
         ['flower', 'kwiatek'],
         ['garden', 'ogród'],
-        ['doniczka', 'pot']
+        ['pot', 'doniczka']
       ];
       this.words = [];
       this.result = 0;
+      this.answer = null;
       this.randWord();
     },
     // metoda sprawdzająca poprawność odpowiedzi
@@ -40,9 +43,11 @@ new Vue({
       if(this.answer.trim().toLowerCase() == this.dictionary[this.currentWordId][0]){
         this.result += 1;
         this.words.push(this.dictionary.splice(this.currentWordId, 1)[0]);
+        this.lastAnswer = true;
         this.randWord();
       } else{
         this.result -= 0.5;
+        this.lastAnswer = false;
         this.randWord(this.currentWordId);
       }
       this.answer = '';
