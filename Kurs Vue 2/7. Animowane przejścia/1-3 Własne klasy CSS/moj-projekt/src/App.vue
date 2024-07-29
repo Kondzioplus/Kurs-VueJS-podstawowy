@@ -9,10 +9,17 @@
       <option>bounceIn</option>
     </select>
     <hr>
+    
+    <select v-model="leaveAnimation" class="form-control">
+      <option>rollOut</option>
+      <option>lightSpeedOut</option>
+      <option>bounceOut</option>
+    </select>
+    <hr>
     <transition name="my-unique-super-name"
     :duration="{ enter: 1000, leave: 2500 }"
     :enter-active-class="entryClasses"
-    leave-active-class="animated rotateOutUpRight">
+    :leave-active-class="leaveClasses">
       <div class="alert alert-success" v-show="display">
       Witaj!
     </div>
@@ -29,10 +36,14 @@ export default {
     data:() => ({
       display: false,
       entryAnimation: 'bounceIn',
+      leaveAnimation: 'lightSpeedOut'
     }),
     computed:{
       entryClasses(){
         return 'animated ' + this.entryAnimation;
+      },
+      leaveClasses(){
+        return 'animated ' + this.leaveAnimation;
       }
     }
 }
